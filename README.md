@@ -3,7 +3,7 @@
 ## Overview of Project
 
 ### Purpose
-There are many crimes that happen in the United States. Some believe that bigger cities and more populated states have more crime rates. In this project, we will be analyzing a dataset describing 1973 violent crime rates by US State. The crimes considered are assault, murder, and rape. Also included is the percent of the population living in urban areas. Our goal is to use unsupervised machine learning methods such as Cluster Heat Maps, Principle Component Analysis, K-Means Clustering, Hierarchical Clustering, and DBSCAN to understand how violent crimes differ between states. 
+There are many crimes that happen in the United States. Some believe that bigger cities and more populated states have more crime rates. In this project, we will be analyzing a dataset describing 1973 violent crime rates by US State. The crimes considered are assault, murder, and rape. Also included is the percentage of the population living in urban areas. Our goal is to use unsupervised machine learning methods such as Cluster Heat Maps, Principle Component Analysis, K-Means Clustering, Hierarchical Clustering, and DBSCAN to understand how violent crimes differ between states. 
 
 ### Data
 
@@ -19,19 +19,19 @@ You can read more about the dataset [here](https://stat.ethz.ch/R-manual/R-devel
 
 ![us-crime-scatter](https://user-images.githubusercontent.com/29410712/179429045-7476b1c1-fe80-45de-92e9-4531dd56e933.png)
 
-In our preliminary analysis, we can see that Murder and Assault is highly positively correlated with a correlation of 0.8. There are some correlation with Rape + Assault and Rape + Murder but not as strong. There is almost no correlation between the Urban Population with Murder and Assault.
+In our preliminary analysis, we can see that Murder and Assault are highly positively correlated with a correlation of 0.8. There are some correlations between Rape + Assault and Rape + Murder but not as strong. There is almost no correlation between the Urban Population with Murder and Assault.
 
 ### Analysis with Cluster Heat Map
 
 ![us-crime-heat](https://user-images.githubusercontent.com/29410712/179429129-f9b3fb27-773f-4f4b-b320-ffd95f49144c.png)
 
-In our cluster heat map analysis, we can visualize that Urban Population has does not necessarily correlate with Murder and Assault. Which means that states with a higher population does not determine murders or assaults. There is some relationship between the number of Rapes, Murders, and Assaults. We can also see that Murder and Assault are similar within the states.
+In our cluster heat map analysis, we can visualize that Urban Population does not necessarily correlate with Murder and Assault. This means that states with a higher population do not determine murders or assaults. There is some relationship between the number of Rapes, Murders, and Assaults. We can also see that Murder and Assault are similar within the states.
 
 ## Deeper Analysis
 
 ### Visualizing Data using Principal Component Analysis (PCA)
 
-Principal Component Analysis (PCA) is one of the most used unsupervised machine learning algorithms across a variety of applications: exploratory data analysis, dimensionality reduction, information compression, and data de-noising. PCA is a dimensionality reduction technique that transforms a set of features in a dataset into a smaller number of features called principal components while at the same time trying to retain as much information in the original dataset as possible. Since we have 4 different variables, we have a fourth dimensional data set. PCA can take 4 or more variables and make a two-dimensional PCA plot. PCA can also tell us which variable is the most valuable for clustering the data. It also can tell us how accurate the two-dimensional graph is. 
+Principal Component Analysis (PCA) is one of the most used unsupervised machine learning algorithms across a variety of applications: exploratory data analysis, dimensionality reduction, information compression, and data de-noising. PCA is a dimensionality reduction technique that transforms a set of features in a dataset into a smaller number of features called principal components while at the same time trying to retain as much information in the original dataset as possible. Since we have 4 different variables, we have a fourth-dimensional data set. PCA can take 4 or more variables and make a two-dimensional PCA plot. PCA can also tell us which variable is the most valuable for clustering the data. It also can tell us how accurate the two-dimensional graph is. 
 
 Principal Component Analysis calculates the average of each variable and using this average, finds the center of the data. It then shifts the data so that the center of the data is at the origin. From here, we input principal components. The principal components are vectors, but they are not chosen at random. The first principal component (PC1) is computed so that it explains the greatest amount of variance in the original features. Thus, it minimizes the distance between each data point on the graph (Sum of Squared) so PC1 is a linear combination of variables. It uses a scaled vector called the "Eigenvector" or "Singular Vector" for PC1. The sum of squared distances for the best fit line is the Eigenvalue for PC1. The second component (PC2) is orthogonal to the first, and it explains the greatest amount of variance left after the first principal component. Then we find PC3 and PC4 which are perpendicular to PC1 and PC2 that goes through the origin. The number of PCs is either the number of variables or the number of samples, whichever is smaller. 
 
@@ -45,7 +45,7 @@ In this scree plot, we can see that PC1, PC2, and PC3 account for the vast major
 
 ### K-Means Cluster Analysis
 
-We will now cluster the states into four clusters using k-means. K-means cluster identify initial clusters and calculate the variances between each cluster or the Euclidean distance. It clusters all the remaining points, calculates the mean of each cluster and then reclusters based on the new means. It repeats until the clusters no longer change. It restarts the cluster until it finds the best overall cluster. It does as many reclustering as we tell it to do. It then comes back and returns to the optimal one.
+We will now cluster the states into four clusters using k-means. K-means cluster identifies initial clusters and calculates the variances between each cluster or the Euclidean distance. It clusters all the remaining points, calculates the mean of each cluster, and then reclusters based on the new means. It repeats until the clusters no longer change. It restarts the cluster until it finds the best overall cluster. It does as much reclustering as we tell it to do. It then comes back and returns to the optimal one.
 
 ![k-mean-cluster](https://user-images.githubusercontent.com/29410712/179429344-1f50a179-1cc5-4ba7-8a28-5eecb1b6b436.png)
 
@@ -62,7 +62,7 @@ By using this we can determine the intra-cluster distance so that we can interpr
 
 ![intra-cluster-distance](https://user-images.githubusercontent.com/29410712/179429395-d7ad781a-01ac-493c-8cbf-34d56bd2892a.png)
 
-We can see that the total intra-cluster distance is large for $k = 1$ and decreases as we increase $k$, until $k=4$, after which it tapers off and gets only marginally smaller. The slope becomes constant after $k = 4$. This indicates that $k=4$ is a good choice.
+We can see that the total intra-cluster distance is large for *k = 1* and decreases as we increase *k*, until *k = 4*, after which it tapers off and gets only marginally smaller. The slope becomes constant after *k = 4*. This indicates that *k = 4* is a good choice.
 
 ![kmean-pca](https://user-images.githubusercontent.com/29410712/179429447-e53a4fcb-47c3-4abd-ba4d-a2207156af06.png)
 
@@ -89,7 +89,7 @@ The results are slightly different from the k-means. The data now is still split
 
 ### DBSCAN
 
-Density-based spatial clustering of applications with noise (DBSCAN) is a data clustering algorithm proposed by Martin Ester, Hans-Peter Kriegel, Jörg Sander and Xiaowei Xu in 1996. It is a density-based clustering non-parametric algorithm: given a set of points in some space, it groups together points that are closely packed together (points with many nearby neighbors), marking as outliers points that lie alone in low-density regions (whose nearest neighbors are too far away).
+Density-based spatial clustering of applications with noise (DBSCAN) is a data clustering algorithm proposed by Martin Ester, Hans-Peter Kriegel, Jörg Sander, and Xiaowei Xu in 1996. It is a density-based clustering non-parametric algorithm: given a set of points in some space, it groups together points that are closely packed together (points with many nearby neighbors), marking as outlier points that lie alone in low-density regions (whose nearest neighbors are too far away).
 
 ![dbscan](https://user-images.githubusercontent.com/29410712/179429780-cd167133-32a9-4987-b9b0-2ff7eaf1098a.png)
 
@@ -102,4 +102,4 @@ Density-based spatial clustering of applications with noise (DBSCAN) is a data c
 
 ![dbscan-pca](https://user-images.githubusercontent.com/29410712/179429796-7dfa95b8-8554-44a6-8259-c27eee4dbeee.png)
 
-These results on the PCA plot is a lot different than before. The DBSCAN is extremely sensitive to the changes in epsilon in the dataset.
+These results on the PCA plot are a lot different than before. The DBSCAN is extremely sensitive to the changes in epsilon in the dataset.
